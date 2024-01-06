@@ -31,17 +31,13 @@
 
         b {
             color: #333;
+            white-space: nowrap; /* Prevents text from wrapping to the next line */
         }
 
-        vid1 a {
+        a.single-line {
             display: block;
             margin-top: 5px;
             color: blue;
-        }
-
-        .single-line {
-            white-space: nowrap;
-            /* Prevents text from wrapping to the next line */
         }
 
         .related-info {
@@ -61,9 +57,9 @@
     <a href="info.html">About</a>
 
     <vid1>
-        <b class="single-line">新年第一个视频！测试！彩虹猫病毒卷土重来！（含破解教程和样本链接） Link</b>
+        <b class="single-line">新年第一个视频！测试！彩虹猫病毒卷土重来！（含破解教程和样本链接）</b>
+        <a class="single-line" href="https://www.bilibili.com/video/BV1wG411z7c3/" target="_blank">Link</a>
         <div class="related-info">
-            <a href="https://www.bilibili.com/video/BV1wG411z7c3/" target="_blank">Link</a>
             <a href="https://lcxzjlucky.lanzoui.com/iRwLHwmi7aj" target="_blank">Download MEMZ Trojan. Password: ch16</a>
         </div>
     </vid1>
@@ -74,3 +70,4 @@
 </body>
 
 </html>
+

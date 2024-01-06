@@ -16,6 +16,14 @@
 
         h1 {
             color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 a {
+            text-decoration: none;
+            color: inherit;
         }
 
         p {
@@ -57,7 +65,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             var language = getParameterByName('lng');
             if (language === 'en') {
-                document.querySelector('h1').textContent = 'About Command_Book';
+                document.querySelector('h1').innerHTML = 'About Command_Book <a href="asbsas/info.html">&#9658;</a>';
                 document.querySelector('a[href="home.html"]').textContent = 'Home';
                 document.querySelector('p').textContent = 'Welcome to the "About" page of Command_Book! Here, you can find information about Command_Book and explore the social media profiles.';
                 document.querySelectorAll('.social-link').forEach(function (link) {
@@ -65,7 +73,7 @@
                     link.href = 'https://' + (platform === 'bilibili' ? 'space.bilibili.com/1334038619' : platform === 'youtube' ? 'youtube.com/@Command_Book' : '#');
                 });
             } else {
-                document.querySelector('h1').textContent = '关于 Command_Book';
+                document.querySelector('h1').innerHTML = '关于 Command_Book <a href="asbsas/info.html">&#9658;</a>';
                 document.querySelector('a[href="home.html"]').textContent = '主页';
                 document.querySelector('p').textContent = '欢迎来到 Command_Book 的 "关于" 页面！在这里，您可以找到有关 Command_Book 的信息并探索社交媒体资料。';
                 document.querySelectorAll('.social-link').forEach(function (link) {
@@ -84,7 +92,7 @@
 </head>
 
 <body>
-    <h1>About Command_Book</h1>
+    <h1>About Command_Book <a href="asbsas/info.html">&#9658;</a></h1>
     <a href="home.html">Home</a>
 
     <p>Welcome to the "About" page of Command_Book! Here, you can find information about Command_Book and explore the social media profiles.</p>

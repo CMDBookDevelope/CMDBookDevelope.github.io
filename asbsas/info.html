@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About 阿闪不是阿散</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            background-color: #h1h1h1;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            max-width: 600px;
+            margin: 0 auto 20px;
+            color: #555;
+        }
+
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+
+        img {
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        .social-link {
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .language-switch {
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var language = getParameterByName('lng');
+            if (language === 'en') {
+                document.querySelector('h1').textContent = 'About 阿闪不是阿散';
+                document.querySelector('a[href="home.html"]').textContent = 'Home';
+                document.querySelector('p').textContent = 'Welcome to the "About" page of 阿闪不是阿散! Here, you can find information about 阿闪不是阿散 and explore the social media profiles.';
+                document.querySelectorAll('.social-link').forEach(function (link) {
+                    var platform = link.textContent.trim().toLowerCase();
+                    link.href = 'https://' + (platform === 'bilibili' ? 'space.bilibili.com/672824581' : '#');
+                });
+            } else {
+                document.querySelector('h1').textContent = '关于 阿闪不是阿散';
+                document.querySelector('a[href="home.html"]').textContent = '主页';
+                document.querySelector('p').textContent = '欢迎来到 阿闪不是阿散 的 "关于" 页面！在这里，您可以找到有关 阿闪不是阿散 的信息并探索社交媒体资料。';
+                document.querySelectorAll('.social-link').forEach(function (link) {
+                    var platform = link.textContent.trim().toLowerCase();
+                    link.href = 'https://' + (platform === 'bilibili' ? 'space.bilibili.com/672824581' : '#');
+                });
+            }
+        });
+
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        function switchLanguage(language) {
+            var currentUrl = window.location.href;
+            var baseUrl = currentUrl.split('?')[0];
+            window.location.href = baseUrl + '?lng=' + language;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>About 阿闪不是阿散</h1>
+    <a href="home.html">Home</a>
+
+    <p>Welcome to the "About" page of 阿闪不是阿散! Here, you can find information about 阿闪不是阿散 and explore the social media profiles.</p>
+
+    <a class="social-link" href="https://space.bilibili.com/672824581" target="_blank">Bilibili<img src="BLogo.png" alt="Bilibili Logo" width="20" height="20"></a>
+
+    <div class="language-switch">
+        <a href="javascript:void(0);" onclick="switchLanguage('en')">English</a> | <a href="javascript:void(0);" onclick="switchLanguage('cn')">Chinese</a>
+    </div>
+</body>
+
+</html>

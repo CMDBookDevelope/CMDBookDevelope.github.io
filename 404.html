@@ -2,39 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404</title>
+    <title>404 Not Found</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-            margin: 0;
             background-color: #h1h1h1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .error-image {
+            width: 200px;
+            height: 200px;
         }
 
         h1 {
-            color: #333;
+            color: #000000; /* You can change the text color as needed */
         }
 
-        img {
-            margin-top: 20px;
-        }
-
-        a {
-            text-decoration: none;
-            color: blue;
+        p {
+            color: #000000; /* You can change the text color as needed */
         }
     </style>
 </head>
 <body>
-    <h1>You are in a wrong url</h1>
-    <a>We'll redirect you to the home page shortly...</a>
-    <br>
-    <img src="unhappyface.png" alt="Unhappy face" width="500" height="500">
-    <br>
-    <a href="home.html">Not Redirected Automatically? Click Me!</a>
-
-    <meta http-equiv="refresh" content="3;url=home.html">
+    <div class="container">
+        <img src="unhappyface.png" alt="Unhappy Face" class="error-image">
+        <h1>404 Not Found</h1>
+        <p>Sorry, the page you are looking for might be in another galaxy.</p>
+        <a href="home.html">"Not automatically redirected to the homepage? Click me!</a>
+    </div>
 </body>
+<meta http-equiv="refresh" content="3;url=home.html">
 </html>

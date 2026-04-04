@@ -28,17 +28,11 @@ window.onload = function() {
             const emojixUrl = `https://emojipic.cn/Pics/72/apple/${entry.name}_${entry.code}.png`;
 
             // 测试 URL 是否存在
-            fetch(emojixUrl, { method: 'HEAD' })
-                .then(res => {
-                    if (res.ok) {
-                        window.location.href = emojixUrl;
-                    } else {
-                        document.body.innerText = "Emojipic PNG 不存在";
-                    }
-                })
-                .catch(() => {
-                    document.body.innerText = "Emojipic PNG 不存在";
-                });
+            fetch(emojixUrl, { method: 'GET' })
+            .then(res => {
+                if(res.ok) window.location.href = emojixUrl;
+                else document.body.innerText = "Emojipic PNG 不存在";
+            })
         })
         .catch(() => {
             document.body.innerText = "加载 emoji 映射表失败";

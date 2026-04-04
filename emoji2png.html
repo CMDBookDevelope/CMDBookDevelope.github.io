@@ -23,11 +23,11 @@ window.onload = function() {
             if (entry) {
                 emojixUrl = `https://emojipic.cn/Pics/72/apple/${entry.name}_${entry.code}.png`;
                 codePoint = entry.code;
-            } else {
+            } //else {
                 // fallback: 用 codepoint 生成 Twemoji
-                codePoint = [...emoji].map(c => c.codePointAt(0).toString(16)).join('-');
-                emojixUrl = null;
-            }
+                //codePoint = [...emoji].map(c => c.codePointAt(0).toString(16)).join('-');
+                //emojixUrl = null;
+            //}
 
             const twemojiUrl = `https://twemoji.maxcdn.com/v/latest/72x72/${codePoint}.png`;
 
@@ -36,9 +36,9 @@ window.onload = function() {
                     .then(res => {
                         if (res.ok) {
                             window.location.href = emojixUrl;
-                        } else {
-                            window.location.href = twemojiUrl;
-                        }
+                        } //else {
+                            //window.location.href = twemojiUrl;
+                        //}
                     })
                     .catch(() => {
                         window.location.href = twemojiUrl;

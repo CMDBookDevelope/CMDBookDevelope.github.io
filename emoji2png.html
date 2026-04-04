@@ -5,7 +5,6 @@
 <title>Emoji 重定向</title>
 <script>
 window.onload = function() {
-    // 获取 URL 参数
     const params = new URLSearchParams(window.location.search);
     let emoji = params.get("syn");
     if (!emoji) {
@@ -13,17 +12,27 @@ window.onload = function() {
         return;
     }
 
-    // 移除引号，如果有
     emoji = emoji.replace(/^["']|["']$/g, '');
-
-    // 将 emoji 转换为 code point
     const codePoint = [...emoji].map(c => c.codePointAt(0).toString(16)).join('-');
 
-    // 生成 Twemoji 72x72 PNG 链接
-    const url = `https://twemoji.maxcdn.com/v/latest/72x72/${codePoint}.png`;
+    // Emojix 本地路径
+    const emojixUrl = `/emojix/${codePoint}.png`;
 
-    // 自动重定向
-    window.location.href = url;
+    // 测试 Emojix 文件是否存在
+    fetch(emojixUrl, { method: 'HEAD' })
+        .then(res => {
+            if (res.ok) {
+                window.location.href = emojixUrl;
+            } else {
+                // 如果没有对应 emoji，就用 Twemoji
+                const twemojiUrl = `https://twemoji.maxcdn.com/v/latest/72x72/${codePoint}.png`;
+                window.location.href = twemojiUrl;
+            }
+        })
+        .catch(() => {
+            const twemojiUrl = `https://twemoji.maxcdn.com/v/latest/72x72/${codePoint}.png`;
+            window.location.href = twemojiUrl;
+        });
 };
 </script>
 </head>

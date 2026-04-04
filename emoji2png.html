@@ -29,10 +29,10 @@ window.onload = function() {
 
             // 测试 URL 是否存在
             fetch(emojixUrl, { method: 'GET' })
-            .then(res => {
-                if(res.ok) window.location.href = emojixUrl;
-                else document.body.innerText = "Emojipic PNG 不存在";
-            })
+                .then(res => {
+                    if(res.ok) window.location.href = emojixUrl;
+                    else document.body.innerText = "Emojipic PNG 不存在";
+                })
         })
         .catch(() => {
             document.body.innerText = "加载 emoji 映射表失败";

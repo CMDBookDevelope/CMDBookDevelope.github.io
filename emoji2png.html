@@ -13,25 +13,42 @@ window.onload = function() {
     }
 
     emoji = emoji.replace(/^["']|["']$/g, '');
-    const codePoint = [...emoji].map(c => c.codePointAt(0).toString(16)).join('-');
 
-    // Emojix 本地路径
-    const emojixUrl = `/emojix/${codePoint}.png`;
-
-    // 测试 Emojix 文件是否存在
-    fetch(emojixUrl, { method: 'HEAD' })
-        .then(res => {
-            if (res.ok) {
-                window.location.href = emojixUrl;
+    fetch("emojiMap.json")
+        .then(response => response.json())
+        .then(emojiMap => {
+            let entry = emojiMap[emoji];
+            let codePoint;
+            let emojixUrl;
+            if (entry) {
+                emojixUrl = `https://emojipic.cn/Pics/72/apple/${entry.name}_${entry.code}.png`;
+                codePoint = entry.code;
             } else {
-                // 如果没有对应 emoji，就用 Twemoji
-                const twemojiUrl = `https://twemoji.maxcdn.com/v/latest/72x72/${codePoint}.png`;
+                // fallback: 用 codepoint 生成 Twemoji
+                codePoint = [...emoji].map(c => c.codePointAt(0).toString(16)).join('-');
+                emojixUrl = null;
+            }
+
+            const twemojiUrl = `https://twemoji.maxcdn.com/v/latest/72x72/${codePoint}.png`;
+
+            if (emojixUrl) {
+                fetch(emojixUrl, { method: 'HEAD' })
+                    .then(res => {
+                        if (res.ok) {
+                            window.location.href = emojixUrl;
+                        } else {
+                            window.location.href = twemojiUrl;
+                        }
+                    })
+                    .catch(() => {
+                        window.location.href = twemojiUrl;
+                    });
+            } else {
                 window.location.href = twemojiUrl;
             }
         })
         .catch(() => {
-            const twemojiUrl = `https://twemoji.maxcdn.com/v/latest/72x72/${codePoint}.png`;
-            window.location.href = twemojiUrl;
+            document.body.innerText = "加载 emoji 映射表失败";
         });
 };
 </script>

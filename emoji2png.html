@@ -23,8 +23,9 @@ window.onload = function() {
                 return;
             }
 
-            // 直接跳转
-            const emojixUrl = `https://emojipic.cn/Pics/72/apple/${entry.name}_${entry.code}.png`;
+            // 替换短横线
+            const name = entry.name.replace(/_/g, "-");
+            const emojixUrl = `https://emojipic.cn/Pics/72/apple/${name}_${entry.code}.png`;
             window.location.href = emojixUrl;
         })
         .catch(() => {
